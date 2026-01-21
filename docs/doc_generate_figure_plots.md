@@ -24,7 +24,7 @@ data_sc=./data/single_cell/rosette_paper
 
 To generate a figure from the paper simply specify the figure and panel. For example, the following will generate Figure 5E:
 ```
-python scripts/publication_plots.py figure_1e
+python scripts/publication_plots.py figure_5e
 ```
 Note: additional visual editing may have been performed in a graphics editor (e.g. Inkscape). 
 
