@@ -1,0 +1,9 @@
+num_domains
+#num_dimains_isolates
+domain_size_mean
+#intradomain_contacts
+vsr
+#frac_cons_edges
+#frac_var_edges
+#deg_mean 
+#gini_degree
