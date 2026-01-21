@@ -5,34 +5,34 @@ Installations are performed with pip. If you prefer Anaconda (recommended for wi
 
 ### Clone the current repo
 ```
-git clone https://github.com/cabrittin/constrained-wiring-abm.git
+git clone https://github.com/cabrittin/constrained-innervation-abm.git
 ```
 
 ### Setup virual environment
 ```
 > mkdir -p ~/.venv
-> python3 -m venv ~/.venv/constrained-wiring-abm
+> python3 -m venv ~/.venv/constrained-innervation-abm
 ```
 Now link the repo's main library to the virtual environment
 ```
-> cd ~/.venv/cebraindev_abm/lib/python3.12/site-packages
-> ln -s /path/to/repo/constrained-wiring-abm/abm/
+> cd ~/.venv/constrained-innervation-abm/lib/python3.12/site-packages
+> ln -s /path/to/repo/constrained-innervation-abm/abm/
 ```
 Adjust the above paths accordingly.
 
 ### Activate virtual environment
 To activate environment
 ```
-> source ~/.venv/constrained-wiring-abm/bin/activate
+> source ~/.venv/constrained-innervation-abm/bin/activate
 ```
 
 For convenience, it is recommended to add the following line to your .bash\_aliases file
 ```
-> alias workon_constrainedwiringabm="source ~/.venv/constrained-wiring-abm/bin/activate"
+> alias workon_abm="source ~/.venv/constrained-innervation-abm/bin/activate"
 ```
 Then to activate the environment, you can just run 
 ```
-> workon_constrainedwiringabm
+> workon_abm
 ```
 
 ### Install requirements
@@ -49,6 +49,6 @@ To see any libraries that failed to install
 ```
 diff requirements.txt <(pip freeze)
 ```
-Most of the output will likely reflect only changes in version numbers. If a constrained-wiring-abm scripts fails to run, then consult this output and the python error to determine any packages that need to be installed. 
+Most of the output will likely reflect only changes in version numbers. If a constrained-innervation-abm scripts fails to run, then consult this output and the python error to determine any packages that need to be installed. 
 
 
