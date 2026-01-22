@@ -26,11 +26,14 @@ pytz==2025.2
 scikit-learn==1.7.0
 scikit-misc==0.5.1
 scipy==1.16.0
+sctool @ git+https://github.com/cabrittin/sctool.git@d275e3de7c73914333d84ad18650c36348030798
 seaborn==0.13.2
 six==1.17.0
 statsmodels==0.14.5
+tb_popgraphs @ git+https://github.com/cabrittin/tb_popgraphs.git@ac55992080101d16ddd44fe67248caa5dea6101b
 texttable==1.7.0
 threadpoolctl==3.6.0
+toolbox @ git+https://github.com/cabrittin/toolbox.git@b4bbbe5c67bd62d7614766240b4f504b39e487d8
 tqdm==4.67.1
 tzdata==2025.2
 xlsxwriter==3.2.9
