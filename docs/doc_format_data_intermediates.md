@@ -2,7 +2,7 @@
 
 All data intermediates are downloadable from the Zenodo link associated
 with the paper. These intermediates consist of processed files derived
-from the raw data and are used for anaylsis and figure generation.
+from the raw data and are used for analysis and figure generation.
 
 Should you want to generate the intermediates yourself, then you can used
 the script/format\_data.py script. You will need to modify the paths in
@@ -32,7 +32,7 @@ To format intermediates simply pass the sections names in the ini file
 python scripts/format_data.py empirical_degree_dist 
 ```
 
-If you need an intermeidate for figure generation, you can cross reference
+If you need an intermediate for figure generation, you can cross reference
 the publication\_plots.ini and format\_data.ini to determine the
 appropriate section name. 
 
