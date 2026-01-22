@@ -736,7 +736,7 @@ def frac_neighbors_across_metrics(args):
     ax.set_yticks([3,4,5]) 
     ax.tick_params(axis='x',labelsize=6)
     ax.tick_params(axis='y',labelsize=6)
-    ax.set_ylabel('# domains',fontsize=8)
+    ax.set_ylabel('# domains',fontsize=7)
    
     ax = _ax[1]
     scatter = sns.scatterplot(ax=ax,data=df,
@@ -749,7 +749,7 @@ def frac_neighbors_across_metrics(args):
     ax.set_yticks([0,0.5,1.0]) 
     ax.tick_params(axis='x',labelsize=6)
     ax.tick_params(axis='y',labelsize=6)
-    ax.set_ylabel('# domains',fontsize=8)
+    ax.set_ylabel('Reproducibility shape',fontsize=7)
  
     ax = _ax[2]
     scatter = sns.scatterplot(ax=ax,data=df,
@@ -762,11 +762,11 @@ def frac_neighbors_across_metrics(args):
     ax.set_yticks([0,0.5,1.0]) 
     ax.tick_params(axis='x',labelsize=6)
     ax.tick_params(axis='y',labelsize=6)
-    ax.set_ylabel('Cons. contacts',fontsize=8)
+    ax.set_ylabel('Conserved contacts',fontsize=7)
     
     ax.set_xlim([0,1])
     ax.set_xticks([0,0.5,1.0])
-    ax.set_xlabel('Neigh contacts',fontsize=8) 
+    ax.set_xlabel('Neighborhood size',fontsize=7) 
 
     ax = _ax[3]
     scatter = sns.scatterplot(ax=ax,data=df,
@@ -779,10 +779,10 @@ def frac_neighbors_across_metrics(args):
     ax.set_yticks([0,0.1,0.2]) 
     ax.tick_params(axis='x',labelsize=6)
     ax.tick_params(axis='y',labelsize=6)
-    ax.set_ylabel('Indv. contacts',fontsize=8)
+    ax.set_ylabel('Unique contacts',fontsize=7)
     ax.set_xlim([0,1])
     ax.set_xticks([0,0.5,1.0])
-    ax.set_xlabel('Neigh contacts',fontsize=8) 
+    ax.set_xlabel('Neighborhood size',fontsize=7) 
 
     plt.tight_layout()
 
@@ -937,8 +937,8 @@ def emp_frac_axons_contacted(args):
     
     ax.set_ylim([0,1])
     ax.set_xlim([0,1])
-    ax.set_xlabel('Axons contacted (Frac.)',fontsize=8)
-    ax.set_ylabel('ECDF',fontsize=8)
+    ax.set_xlabel('Neighborhood size',fontsize=8)
+    ax.set_ylabel('Cumulative fraction',fontsize=8)
     ax.tick_params(axis='y',labelsize=6)
     ax.tick_params(axis='x',labelsize=6)
     ax.legend(loc='lower right',fontsize=6) 
