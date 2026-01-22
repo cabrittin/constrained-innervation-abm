@@ -106,13 +106,13 @@ def build_consensus(args):
         #for c in C: print('\t',c.number_of_edges()) 
         M = graph.index_merge(C)
         graph.zip_index_consensus_graph_edges(M,graphs)
-        print(M.number_of_edges())
         pmap = dict([(n,0) for n in M.nodes()])
         for p in pioneers: pmap[p] = 1
         nx.set_node_attributes(M,pmap,'is_pioneer')
         
         #print(M.number_of_edges())
         nx.write_graphml(M,cfg['files'][gname])
+        print(f'Group: {grp}, # nodes: {M.number_of_nodes()}, # edges: {M.number_of_edges()}') 
         print(f"Wrote to {cfg['files'][gname]}")
 
 

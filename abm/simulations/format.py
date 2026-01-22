@@ -174,6 +174,7 @@ def analyze_specificity_change(args):
         R0 = abm.proc_data.pg_breakdown_reproducibility(P0,max_deg=max_deg)
         R1 = abm.proc_data.pg_breakdown_reproducibility(P1,max_deg=max_deg)
         
+        ## ONLY USE THE CONSERVED CONTACTS
         R0 = R0[:,-1]
         R1 = R1[:,-1]
 

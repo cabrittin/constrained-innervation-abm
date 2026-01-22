@@ -48,7 +48,7 @@ def sdm_kde(args):
     sdmthresh = analyze.get_sdm_thresh(df,bandwidth=bandwidth)
     
     print(f"SDM threshold: {sdmthresh}")
-    fig,ax = plt.subplots(1,1,figsize=(1.2,1.2))
+    fig,ax = plt.subplots(1,1,figsize=(1.5,1.5))
     ax.hist(sdm,bins=60,range=(0,4),density=True,facecolor='#d9d9d9')
     ax.plot(x,sdm_density,color='k')
     if sdmthresh is not None: 
@@ -114,12 +114,12 @@ def sdm_density(args):
     emp = pd.read_csv(args.df_emp)
     emp = emp.mean(axis=0)
     
-    fig,ax = plt.subplots(1,1,figsize=(1.2,1.2))
+    fig,ax = plt.subplots(1,1,figsize=(1.4,1.4))
     sns.kdeplot(ax=ax,data=df,
                 x='num_domains',y='vsr',hue='sdm_group',
                 bw_method=0.5,palette=DOM_MAP,
                 common_norm=False,legend=False,linewidth=0.1)
-    ax.plot([emp['num_domains']],[emp['vsr']],marker="*",ms=4,color='k') 
+    ax.plot([emp['num_domains']],[emp['vsr']],marker="*",ms=6,color='k') 
     ax.tick_params(axis='x',labelsize=6)
     ax.tick_params(axis='y',labelsize=6)
     ax.set_yticks([0,0.5,1.0])
@@ -142,12 +142,12 @@ def affinity_vs_scaffold_hue_sdm(args):
     sns.boxplot(ax=ax,data=df,
                 x='average_response_rate',y='num_pioneers',
                 hue='sdm_group',palette=DOM_MAP,hue_order=[1,0],
-                width=0.5)
+                width=0.5,linewidth=0.5)
     ax.set_yticks([0,5,10,15,20,25,30,35])
-    ax.set_xticklabels(['No','Yes'])
+    ax.set_xticklabels(['off','on'])
     ax.tick_params(axis='x',labelsize=6)
     ax.tick_params(axis='y',labelsize=6) 
-    ax.set_ylabel('# pioneers',fontsize=8)
+    ax.set_ylabel('# pioneers',fontsize=7)
     ax.set_xlabel('Pioneer-follower affinity',fontsize=6)
     plt.legend([],[],frameon=False)
     plt.tight_layout()
@@ -420,8 +420,8 @@ def specificity(args):
     for (idx,row) in df.iterrows():
         if row['run'] not in run_process: continue
         if row['sdm_group'] == 0: continue 
-        if row['num_pioneers'] < 14: continue
-        if row['num_pioneers'] > 20: continue 
+        if row['num_pioneers'] < 10: continue
+        if row['num_pioneers'] > 25: continue 
         spec = row[scolumn]
         if spec < 0.8 or spec >= 0.9: continue
         z = nd[idx,:] 
@@ -2007,6 +2007,7 @@ def contact_specificity_compare(args):
     
     print(count)
     R = np.array(R)
+    print('shape',R.shape)
     print(R[:,3])
     t = R[:,3]
     print((t>=0).sum(),(t<0).sum())
@@ -2019,6 +2020,7 @@ def contact_specificity_compare(args):
     
     def make_plot(ax,R,idx,xlabel,ylabel):
         log2y = R[:,idx] 
+        print(f'# of plot points n = {R.shape[0]}') 
         ax.scatter(R[:,0],R[:,idx],s=4,color='k')
         coef = np.polyfit(R[:,0],R[:,idx],1)
         x = np.linspace(0,0.2,21)
@@ -2051,12 +2053,14 @@ def contact_specificity_compare(args):
     make_plot(ax[0],R,3,'Δ specificity','Δ cons. contacts')
     ax[0].set_ylim([-0.25,0.75]) 
     make_plot(ax[1],R,1,'Δ specificity','Δ # contacts')
+    ax[1].set_ylim([-0.25,0.75]) 
     make_plot(ax[2],R,2,'Δ specificity','Δ indv. contacts')
-    make_plot(ax[3],R,5,'Δ specificity','Δ p-f contacts')
-    make_plot(ax[4],R,6,'Δ specificity','Δ f-f contacts')
+    ## USES THE CONSERVED CONTACTS 
+    make_plot(ax[3],R,5,'Δ specificity','Δ pioneer-follower contacts')
+    make_plot(ax[4],R,6,'Δ specificity','Δ follower-follower contacts\n (same pioneer)')
     make_plot(ax[5],R,7,'Δ specificity',"Δ p-p' contacts")
     make_plot(ax[6],R,8,'Δ specificity',"Δ p-f' contacts")
-    make_plot(ax[7],R,9,'Δ specificity',"Δ f-f' contacts")
+    make_plot(ax[7],R,9,'Δ specificity',"Δ follower-folloer contacts\n (diff pioneers)")
     
     x = [0,200,400,600]
     ax[8].scatter(abs(R[:,11]),R[:,10],s=4,color='k')
