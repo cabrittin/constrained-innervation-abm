@@ -1,8 +1,10 @@
 # constrained-innervation-abm
-Agent-based model of C. elegans nerve ring assembly. Simulates how transient morphogenetic constraints, pioneer scaffolds, and local axon-axon interactions shape reproducible spatial domains and bimodal connectivity patterns, linking development to population-level wiring statistics.
+Agent-based model of *C. elegans* nerve ring assembly. Simulates how transient morphogenetic constraints, pioneer scaffolds, and local axon-axon interactions shape reproducible spatial domains and bimodal connectivity patterns, linking development to population-level wiring statistics.
 
 
 ![Blender version of simulator](./docs/images/repo_sim_full_sicle.gif)
+*Example simulation with 14 pioneers (red) and 56 follower axons.*
+
 
 ## Contents
 1. [Settup environment](./docs/doc_setup_environment.md)
