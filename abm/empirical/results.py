@@ -93,11 +93,71 @@ def reproducibility_shape(args):
     ax.set_xticks(bins)
     ax.set_xticks(np.arange(1,7))
     ax.tick_params(axis='both',labelsize=6)
-    ax.set_ylabel('Frac. contacts', fontsize=8)
-    ax.set_xlabel('Reproducibility', fontsize=8)
-    ax.text(0.05,0.85,f'{args.label}',transform=ax.transAxes,fontsize=8)
-    ax.text(0.05,0.65,f'n={len(R)}',transform=ax.transAxes,fontsize=8)
+    ax.set_ylabel('Frac. contacts', fontsize=7)
+    #ax.set_xlabel('Reproducibility', fontsize=7)
+    ax.set_xlabel('# datasets with contact', fontsize=7)
+    ax.text(0.05,0.85,f'{args.label}',transform=ax.transAxes,fontsize=7)
+    ax.text(0.05,0.65,f'n={len(R)}',transform=ax.transAxes,fontsize=7)
     plt.tight_layout()
+
+def reproducibility_shape_unimodal(args):
+    cfg = ConfigParser(interpolation=ExtendedInterpolation())
+    cfg.read(args.cfg)
+    
+    fin = cfg['files'][args.graph]
+    G = PipeObject(fin=fin)
+
+    R = [data['id'] for (u,v,data) in G.edges(data=True)]
+    N = len(R)
+    U = assign_gaussian_values(N)
+    weights = np.ones_like(U) / N
+
+    bins = np.arange(0.5,7)
+    fig,ax = plt.subplots(1,1,figsize=(1.5,1.2))
+    ax.hist(U,bins=bins,weights=weights,rwidth=0.7,
+            facecolor='lightgray',edgecolor='k')
+    ax.set_ylim([0,0.5])
+    ax.set_yticks([0,0.2,0.4])
+    ax.set_xticks(bins)
+    ax.set_xticks(np.arange(1,7))
+    ax.tick_params(axis='both',labelsize=6)
+    ax.set_ylabel('Frac. contacts', fontsize=7)
+    #ax.set_xlabel('Reproducibility', fontsize=7)
+    ax.set_xlabel('# datasets with contact', fontsize=7)
+    ax.text(0.05,0.85,f'{args.label}',transform=ax.transAxes,fontsize=7)
+    ax.text(0.05,0.65,f'n={N}',transform=ax.transAxes,fontsize=7)
+    plt.tight_layout()
+
+
+
+def assign_gaussian_values(N, peak_value=6, peak_fraction=0.4):
+    """
+    Assigns N objects values from 1-6 such that ~peak_fraction of objects get peak_value,
+    and the rest are distributed below the peak to give a mean near peak_value.
+    """
+    values = np.array([1,2,3,4,5,6])
+    
+    # Assign 40% of values to 6
+    num_peak = int(N * peak_fraction)
+    assigned = [6]*num_peak
+    
+    # Remaining objects
+    num_rest = N - num_peak
+    # Define probabilities for 1-5 using a truncated discrete Gaussian (centered near 5.5)
+    x = np.array([1,2,3,4,5])
+    mu = 5.5  # mean near 6
+    sigma = 2  # controls spread
+    probs = np.exp(-0.5*((x-mu)/sigma)**2)
+    probs /= probs.sum()  # normalize
+
+    # Randomly assign the rest
+    assigned_rest = np.random.choice(x, size=num_rest, p=probs)
+    
+    # Combine and shuffle
+    assigned.extend(assigned_rest)
+    np.random.shuffle(assigned)
+    return np.array(assigned)
+
 
 def spatial_domains(args):
     cfg = ConfigParser(interpolation=ExtendedInterpolation())
