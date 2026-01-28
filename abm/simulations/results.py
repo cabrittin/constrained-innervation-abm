@@ -442,7 +442,7 @@ def specificity(args):
     ax.set_xlim([0,1])
     #ax.set_xticks([0,0.2,0.4,0.6,0.8,1.0])
     ax.xaxis.set_minor_locator(AutoMinorLocator())
-    ax.set_xlabel('Pioneer uniqueness',fontsize=8)
+    ax.set_xlabel(args.xlabel,fontsize=8)
     ax.set_ylabel('1 - ECDF',fontsize=8)
     #ax.set_title(f'Scaffold size: {scaffold}',fontsize=6)
     ax.tick_params(axis='y',labelsize=6)
