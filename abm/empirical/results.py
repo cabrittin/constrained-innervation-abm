@@ -270,6 +270,26 @@ def pioneer_contact_distribution(args):
     #plt.savefig('results/pioneer_contact_thresh.svg') 
     #plt.show()
 
+def conserved_vs_pioneer_contacts(args):
+    df = pd.read_csv(args.data_emp) 
+    fig,ax = plt.subplots(1,1,figsize=(1.8,1.8))
+    sns.pointplot(ax=ax,data=df,x='num_pioneers',y='num_conserved',color='k',linewidth=1.0) 
+    ax.set_xlabel('# pioneers',fontsize=8)
+    ax.set_ylabel('# cons. contacts',fontsize=8)
+    ax.set_yticks([0,10,20,30])
+    ax.tick_params(axis='x',labelsize=6) 
+    ax.tick_params(axis='y',labelsize=6) 
+
+    offset = 5
+    n_per_group = df.groupby('num_pioneers').size()
+
+    # Add n labels below x-axis
+    for i, (tick, n) in enumerate(zip(ax.get_xticklabels(), n_per_group)):
+        ax.text(i, ax.get_ylim()[0] - offset, f'n={n}', 
+                ha='center', va='top', fontsize=4)
+    
+    plt.tight_layout()
+
 def assigned_pioneer_groups(args):
     from kmodes.kmodes import KModes
     df = pd.read_csv(args.df_emp)

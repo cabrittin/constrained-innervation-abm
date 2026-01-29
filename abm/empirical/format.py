@@ -363,6 +363,37 @@ def degree_dist_pg(args):
     np.save(args.fout,edat)
     print(f'Wrote to {args.fout}')
 
+def conserved_vs_num_pioneers(args):
+    cfg = ConfigParser(interpolation=ExtendedInterpolation())
+    cfg.read(args.config)
+    
+    max_deg = cfg.getint('params','max_deg')
+    pct_thresh = cfg.getfloat('params','pg_pct_thresh')
+    pio = sorted(read.into_list(cfg['mat']['pioneers']))
+    x = np.arange(15)
+    ecomp = np.zeros((3,len(x)))
+    df = []
+    data = [] 
+    for idx,G in iter_graphs_mem(cfg):
+        assign_pioneer_groups(G,pio,pct_thresh=pct_thresh)
+        num_targets=[]
+        for u in G.nodes():
+            if G.nodes[u]['is_pioneer'] == 1: continue
+            if len(G.nodes[u]['target']) == 0: continue
+            num_targets = len(G.nodes[u]['target']) 
+            num_cons = 0 
+            for v in G.neighbors(u):
+                if G[u][v]['id'] == max_deg: num_cons += 1
+            
+            data.append([idx,u,num_targets,num_cons])
+            #df.append([idx,len(G.nodes[u]['target'])])
+    
+    
+    df = pd.DataFrame(data,columns=['age','cell','num_pioneers','num_conserved'])
+    
+    df.to_csv(args.fout,index=False)
+    print(f'Wrote to {args.fout}') 
+
 def build_pg_breakdown_reproducibility(args):
     cfg = ConfigParser(interpolation=ExtendedInterpolation())
     cfg.read(args.config)
