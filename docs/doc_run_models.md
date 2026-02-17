@@ -63,7 +63,7 @@ Initiating analysis for tmp/split.tmp.2
 Initiating analysis for tmp/split.tmp.1
 ```
 
-To run both in sequentially: 
+To run both sequentially: 
 ```
 > ./bash/parallel_run_and_analyze.sh 2 data/models/model1
 ```
