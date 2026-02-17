@@ -95,15 +95,6 @@ Post-simulation analysis settings.
 
 ---
 
-## Running the Simulation
-
-```bash
-# Example command — replace with actual runner
-python run_simulation.py --config <config_file>.ini
-```
-
----
-
 ## Outputs
 
 > _Describe expected output files, directories, or metrics produced by this configuration here._
