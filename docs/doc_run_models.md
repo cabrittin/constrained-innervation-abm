@@ -30,3 +30,14 @@ Data written to data/models/model1/sims/
   0%|▏                            | 4/7000 [00:08<3:53:54,  2.01s/it]
 ```
 
+The ouput will be .pkl files in the `data/models/model1/sims` directory. One .pkl file per line in the `sweep_log` file. 
+
+## Analyze the simulations
+To analyze the simulations:
+```
+> python scripts/run_model.py run --dir data/models/model1/ --fout data/models/model1/dataframe.csv
+Data written to data/models/model1/sims/
+  0%|▏                            | 1/7000 [00:14<27:45:20, 14.28s/it]]
+```
+Analysis takes a long time because of the spatial domain clustering. The output is the `dataframe.csv` where each row corresponds to the analysis output to the corresponding row in the `sweep_log` file.  
+
