@@ -11,7 +11,7 @@ Agent-based model of *C. elegans* nerve ring assembly. Simulates how transient m
 2. [Generate figure plots](./docs/doc_generate_figure_plots.md)
 3. [Format data intermediates](./docs/doc_format_data_intermediates.md)
 4. [Testing Models](./docs/doc_testing_models.md)
-5. [Running models](.dos/doc_run_models.md)
+5. [Running models](.docs/doc_run_models.md)
 
 <!--
 5. [Precison testing](./docs/doc_precision_testing.md)
