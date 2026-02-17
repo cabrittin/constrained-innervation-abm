@@ -22,4 +22,11 @@ Samples: 100%|██████████████████████
 Wrote to data/models/model1/sweep_log.csv
 ```
 
+## Run the model
+To run the model:
+```
+> python scripts/run_model.py run --dir data/models/model1/
+Data written to data/models/model1/sims/
+  0%|▏                                                                                                                                                                                | 4/7000 [00:08<3:53:54,  2.01s/it]
+```
 
