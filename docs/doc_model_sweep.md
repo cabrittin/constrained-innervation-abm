@@ -96,9 +96,6 @@ Post-simulation analysis settings.
 ---
 
 ## Outputs
-
-> _Describe expected output files, directories, or metrics produced by this configuration here._
-
 - Sweep log file that specifies the parameters for each simulation.
 - Pickle files of complete simulations in the sims directory. 
 
