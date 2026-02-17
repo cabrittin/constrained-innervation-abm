@@ -42,7 +42,7 @@ Data written to data/models/model1/sims/
 Analysis takes a long time because of the spatial domain clustering. The output is the `dataframe.csv` where each row corresponds to the analysis output to the corresponding row in the `sweep_log` file.  
 
 ## Parallelizing simulation runs and analysis
-Simulations are already parallized to use 6 processing units, where each unit simulates a replicate for the specified parameters. If your machine has at least 16 processing units, then additional parallelization is possible. For linux machines, we provide bash scripts to facilitate addionional parallelization. These can be executed as follows. To paralellize runs:
+Simulations are already parallized to use 6 processing units, where each unit simulates a replicate for the specified parameters. If your machine has at least 16 processing units, then additional parallelization is possible. For linux machines, we provide bash scripts to facilitate parallelization. These can be executed as follows. To paralellize runs:
 ```
 >./bash/parallelize_run.sh 2 data/models/model1/
 Parallelize data/models/model_test/ across 2 procs
