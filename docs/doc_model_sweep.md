@@ -23,12 +23,12 @@ Core simulation parameters controlling the model type, scale, and behavioral pro
 | `vol_analysis_end` | `220` | Time step at which volumetric analysis ends |
 | `num_pioneers` | `10` | Number of pioneer agents |
 | `average_response_rate` | `0` | Effectively the average number of pioneers that a follower will respond to. -1: no affinity, 0: exactly 1 pioneer, 1 or more: the average number |
-| `locality_mean` | `0` | Specifies that followers will have affinity for, on average, the dth closest pioneer. 0: take the closest pioneer |
+| `locality_mean` | `0` | Specifies mean pioneer-follower distanct. Followers will have affinity for, on average, the dth closest pioneer. 0: take the closest pioneer |
 | `locality_std` | `1` | Standard deviation around the locality\_mean |
 | `response_seed` | `123` | Random seed for response rate assignment |
 | `locality_seed` | `321` | Random seed for locality assignment |
-| `pioneer_flips` | `0` | Number of pioneers 'affinity molecules' to be flipped on average |
-| `pioneer_locality_mean` | `0` | Specifies that the flipped molecule should correspond to, on average, the dth nearest pioneer. 0: take the closest pioneer |
+| `pioneer_flips` | `0` | Controls pioneer distintiveness. Number of pioneers 'affinity molecules' to be flipped on average |
+| `pioneer_locality_mean` | `0` | Specifies mean pioneer-pioneer distance. The flipped molecule should correspond to, on average, the dth nearest pioneer. 0: take the closest pioneer |
 | `pioneer_locality_std` | `0` | Standard deviation around the pioneer\_locality\_mean |
 | `pioneer_flips_seed` | `456` | Random seed for pioneer flip events |
 | `pioneer_locality_seed` | `654` | Random seed for pioneer locality assignment |
