@@ -113,6 +113,7 @@ class Model(AgentEnoder):
         modified for the positional_info class. I have not yet tested this flag in the class.
 
         """
+        self.use_force = False 
         if self.num_pioneers > 0: self.use_force = True
 
         logging.debug('Model: Loaded')
